@@ -23,20 +23,13 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <parent>
-        <artifactId>tiles-master</artifactId>
-        <groupId>org.apache.tiles</groupId>
-        <version>7</version>
-        <relativePath />
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.apache.tiles</groupId>
+    <groupId>com.journaltech</groupId>
     <artifactId>tiles-parent</artifactId>
-    <version>3.1-SNAPSHOT</version>
+    <version>3.1.0-jakarta-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Tiles 3</name>
-    <description>Tiles 3: A framework for page composition.</description>
+    <name>Tiles 3 Jakarta</name>
+    <description>Tiles 3 Jakarta: A framework for page composition migrated to Jakarta EE.</description>
     <url>http://tiles.apache.org/framework/</url>
     <scm>
         <connection>scm:svn:http://svn.apache.org/repos/asf/tiles/framework/trunk/</connection>
@@ -52,15 +45,6 @@
         <module>tiles-template</module>
         <module>tiles-servlet</module>
         <module>tiles-jsp</module>
-        <module>tiles-freemarker</module>
-        <module>tiles-velocity</module>
-        <module>tiles-el</module>
-        <module>tiles-mvel</module>
-        <module>tiles-ognl</module>
-        <module>tiles-compat</module>
-        <module>tiles-extras</module>
-        <module>assembly</module>
-        <module>tiles-test-pom</module>
     </modules>
 
     <issueManagement>
@@ -70,30 +54,54 @@
     </issueManagement>
 
     <distributionManagement>
+        <repository>
+            <id>github-sustain</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/sustain/tiles-jakarta</url>
+        </repository>
+        <snapshotRepository>
+            <id>github-sustain</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/sustain/tiles-jakarta</url>
+        </snapshotRepository>
         <site>
             <id>apache-site</id>
             <url>scp://people.apache.org/www/tiles.apache.org/framework</url>
         </site>
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>github-sustain</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/sustain/*</url>
+        </repository>
+        <repository>
+            <id>github-journaltech</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/journaltech/*</url>
+        </repository>
+    </repositories>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.apache.tiles</groupId>
+                <groupId>com.journaltech</groupId>
                 <artifactId>tiles-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.tiles</groupId>
+                <groupId>com.journaltech</groupId>
                 <artifactId>tiles-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.tiles</groupId>
+                <groupId>com.journaltech</groupId>
                 <artifactId>tiles-servlet</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.tiles</groupId>
+                <groupId>com.journaltech</groupId>
                 <artifactId>tiles-template</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -174,45 +182,45 @@
                 <version>2.3.2.Final</version>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.5</version>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>6.1.0</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>javax.servlet.jsp</groupId>
-                <artifactId>jsp-api</artifactId>
-                <version>2.1</version>
+                <groupId>jakarta.servlet.jsp</groupId>
+                <artifactId>jakarta.servlet.jsp-api</artifactId>
+                <version>3.1.0</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>javax.el</groupId>
-                <artifactId>el-api</artifactId>
-                <version>1.0</version>
+                <groupId>jakarta.el</groupId>
+                <artifactId>jakarta.el-api</artifactId>
+                <version>5.0.1</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.7</version>
+                <version>4.13.2</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.easymock</groupId>
                 <artifactId>easymock</artifactId>
-                <version>3.0</version>
+                <version>4.3</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>3.4</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.shale</groupId>
                 <artifactId>shale-test</artifactId>
                 <version>1.0.5</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.easymock</groupId>
-                <artifactId>easymockclassextension</artifactId>
-                <version>3.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -233,7 +241,7 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-            	<groupId>org.apache.tiles</groupId>
+            	<groupId>com.journaltech</groupId>
             	<artifactId>tiles-request-api</artifactId>
             	<version>${tiles.request.version}</version>
             </dependency>
@@ -243,6 +251,29 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.14.1</version>
+                    <configuration>
+                        <source>17</source>
+                        <target>17</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.2.5</version>
+                    <configuration>
+                        <argLine>
+                            --add-opens java.base/java.lang=ALL-UNNAMED
+                            --add-opens java.base/java.util=ALL-UNNAMED
+                            --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+                            --add-opens java.base/java.text=ALL-UNNAMED
+                            --add-opens java.desktop/java.awt.font=ALL-UNNAMED
+                        </argLine>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
                     <configuration>
@@ -258,7 +289,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>2.3.7</version>
+                    <version>5.1.9</version>
                     <inherited>true</inherited>
                 </plugin>
             </plugins>
@@ -311,6 +342,8 @@
     </build>
 
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError> <!-- remove with master-8 -->
         <tiles.osgi.symbolicName>org.apache.${project.artifactId}</tiles.osgi.symbolicName>
         <tiles.osgi.export>org.apache.tiles.*;version=${project.version}</tiles.osgi.export>
@@ -319,7 +352,7 @@
         <tiles.osgi.private />
         <tiles.manifestfile>target/osgi/MANIFEST.MF</tiles.manifestfile>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tiles.request.version>1.0.7</tiles.request.version>
+        <tiles.request.version>1.1.0-jakarta-SNAPSHOT</tiles.request.version>
         <tiles.autotag.version>1.1.0</tiles.autotag.version>
     </properties>
 

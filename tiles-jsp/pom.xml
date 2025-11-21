@@ -24,9 +24,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <groupId>org.apache.tiles</groupId>
+    <groupId>com.journaltech</groupId>
     <artifactId>tiles-parent</artifactId>
-    <version>3.1-SNAPSHOT</version>
+    <version>3.1.0-jakarta-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -69,6 +69,7 @@
           </archive>
         </configuration>
       </plugin>
+      <!-- Autotag plugin disabled for Jakarta migration
       <plugin>
         <groupId>org.apache.tiles.autotag.plugin</groupId>
         <artifactId>maven-autotag-plugin</artifactId>
@@ -87,6 +88,7 @@
             </execution>
         </executions>
       </plugin>
+      -->
       <plugin>
         <groupId>net.sourceforge.maven-taglib</groupId>
         <artifactId>maven-taglib-plugin</artifactId>
@@ -117,11 +119,11 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.tiles</groupId>
+      <groupId>com.journaltech</groupId>
       <artifactId>tiles-servlet</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.tiles</groupId>
+      <groupId>com.journaltech</groupId>
       <artifactId>tiles-template</artifactId>
     </dependency>
 
@@ -143,14 +145,19 @@
     </dependency>
 
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
+      <groupId>jakarta.servlet.jsp</groupId>
+      <artifactId>jakarta.servlet.jsp-api</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.el</groupId>
+      <artifactId>jakarta.el-api</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -162,11 +169,7 @@
       <artifactId>easymock</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.easymock</groupId>
-      <artifactId>easymockclassextension</artifactId>
-      <scope>test</scope>
-    </dependency>
+    
     <dependency>
       <groupId>org.apache.shale</groupId>
       <artifactId>shale-test</artifactId>
@@ -174,7 +177,7 @@
     </dependency>
 
     <dependency>
-        <groupId>org.apache.tiles</groupId>
+        <groupId>com.journaltech</groupId>
         <artifactId>tiles-request-jsp</artifactId>
         <version>${tiles.request.version}</version>
     </dependency>

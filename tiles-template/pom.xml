@@ -23,14 +23,14 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.apache.tiles</groupId>
+  <groupId>com.journaltech</groupId>
   <artifactId>tiles-template</artifactId>
   <name>Tiles - Template Technologies Support</name>
   <description>Common code for integration of Tiles for different templating technologies.</description>
   <parent>
     <artifactId>tiles-parent</artifactId>
-    <groupId>org.apache.tiles</groupId>
-    <version>3.1-SNAPSHOT</version>
+    <groupId>com.journaltech</groupId>
+    <version>3.1.0-jakarta-SNAPSHOT</version>
   </parent>
   <properties>
       <!-- decrease this whenever possible -->
@@ -38,6 +38,7 @@
   </properties>
   <build>
     <plugins>
+      <!-- Autotag plugin disabled for Jakarta migration
       <plugin>
         <groupId>org.apache.tiles.autotag.plugin</groupId>
         <artifactId>maven-autotag-plugin</artifactId>
@@ -54,11 +55,12 @@
             </execution>
         </executions>
       </plugin>
+      -->
     </plugins>
   </build>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tiles</groupId>
+      <groupId>com.journaltech</groupId>
       <artifactId>tiles-api</artifactId>
     </dependency>
 
@@ -90,11 +92,7 @@
       <artifactId>easymock</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.easymock</groupId>
-      <artifactId>easymockclassextension</artifactId>
-      <scope>test</scope>
-    </dependency>
+    
     <dependency>
         <groupId>org.apache.tiles</groupId>
         <artifactId>tiles-autotag-core-runtime</artifactId>

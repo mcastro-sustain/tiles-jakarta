@@ -20,13 +20,13 @@
  */
 package org.apache.tiles.web.startup;
 
-import static org.easymock.classextension.EasyMock.*;
+import static org.easymock.EasyMock.*;
 
 import java.util.Enumeration;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 import org.apache.tiles.request.servlet.ServletApplicationContext;
 import org.apache.tiles.startup.TilesInitializer;
@@ -54,6 +54,7 @@ public class AbstractTilesInitializerServletTest {
 
         expect(servlet.createTilesInitializer()).andReturn(initializer);
         expect(config.getServletContext()).andReturn(servletContext);
+        expect(config.getInitParameter("jakarta.servlet.http.legacyDoHead")).andReturn(null);
         expect(servletContext.getInitParameterNames()).andReturn(names);
         expect(config.getInitParameterNames()).andReturn(names);
         expect(names.hasMoreElements()).andReturn(false).times(2);
